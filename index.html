@@ -14,24 +14,29 @@
         flex-direction: column;
       }
 
-      #canvas {
-        border: 1px solid;
-      }
-
       button {
         margin: 5px;
         padding: 1em;
-        border-radius: 0.25em;
-        border: 1px solid;
+        border-radius: 6px;
+        border: none;
+        background-color: orange;
+        font-weight: bold;
+        color: white;
+      }
+
+      #buttonWrapper {
+        display: 'flex';
       }
     </style>
   </head>
   <body>
 
-    <canvas id="canvas" width="300" height="300"></canvas>
-    
-    <button id="button-play">Play</button>
-    <button id="button-pause">Stop</button>
+    <canvas id="canvas" width="1500" height="1000"></canvas>
+
+    <div id="buttonWrapper">
+      <button id="button-play">Play</button>
+      <button id="button-pause">Stop</button>
+    </div>
 
     <script src="main.js" type="module"></script>
   </body>

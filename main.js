@@ -11,7 +11,10 @@ import circleCenterRenderer from './renderCircleCenter.js'
 import verticalBarsRenderer from './verticalBarRenderer.js'
 import verticalBarsMonoRenderer from './verticalBarsMonoRenderer.js'
 import radialRayRenderer from './radialRayRenderer.js'
+import ikesRenderer from './ikesRenderer.js'
 
+const windowWidth = window.innerWidth;
+const windowHeight = window.innerHeight - 100;
 
 // --------------------------------------------------------
 // Canvas
@@ -20,6 +23,9 @@ import radialRayRenderer from './radialRayRenderer.js'
 // renderers below
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
+
+canvas.style.width = `${windowWidth}px`;
+canvas.style.height = `${windowHeight}px`;
 
 
 // ----------------------------------------------------------
@@ -76,9 +82,9 @@ function startAudio() {
 // This function renders the audio to the canvas using a renderer
 function render() {
 
-	const centerX = 300 / 2
-	const centerY = 300 / 2
-	const radius = 300 / 5
+	const centerX = windowWidth / 2
+	const centerY = windowHeight / 2
+	const radius = windowWidth / 5
 	analyser.getByteFrequencyData(frequencyArray)
 	
 	// Use one of the renderers below 
@@ -86,10 +92,10 @@ function render() {
 	// verticalBarsMonoRenderer(frequencyArray, ctx, 12, 300, 300)
 	// verticalBarsRenderer(frequencyArray, ctx, 300, 300)
 	// circleCenterRenderer(frequencyArray, ctx, centerX, centerY)
-	// circleGridRenderer(frequencyArray, ctx, 300, 300)
-	circleRenderer(frequencyArray, ctx, centerX, centerY, radius)
+	// circleGridRenderer(frequencyArray, ctx, 500, 500)
+	// circleRenderer(frequencyArray, ctx, centerX, centerY, radius)
+	ikesRenderer(frequencyArray, ctx, windowWidth, windowHeight)
 
 	// Set up the next animation frame
 	requestAnimationFrame(render)
 }
-
